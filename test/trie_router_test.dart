@@ -14,6 +14,8 @@ void main() {
       expect(isNew, isTrue);
       isNew = trie.add(['users', ':id'], 300);
       expect(isNew, isFalse);
+      expect(trie.contains(['users', ':id']), isTrue);
+      expect(trie.contains(['users']), isFalse);
     });
   });
 }
