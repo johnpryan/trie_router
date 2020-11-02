@@ -10,7 +10,10 @@ void main() {
     });
 
     test('First Test', () {
-      expect(trie, isNotNull);
+      var isNew = trie.add(['users', ':id'], 100);
+      expect(isNew, isTrue);
+      isNew = trie.add(['users', ':id'], 300);
+      expect(isNew, isFalse);
     });
   });
 }
