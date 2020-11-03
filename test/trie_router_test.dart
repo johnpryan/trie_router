@@ -41,6 +41,7 @@ void main() {
       routerTrie.add(['users', 'all'], 100);
       expect(routerTrie.get(['users', 'all']), equals(TrieRouterData(100, {})));
     });
+
     test('get() returns a map of keys prefixed with a colon', () {
       routerTrie.add(['users', ':id'], 100);
       expect(routerTrie.contains(['users', '123']), isTrue);
