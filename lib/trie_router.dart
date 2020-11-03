@@ -3,4 +3,4 @@
 /// More dartdocs go here.
 library trie_router;
 
-export 'src/trie.dart';
+export 'src/trie_router.dart';
