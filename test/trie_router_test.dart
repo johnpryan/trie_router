@@ -68,6 +68,12 @@ void main() {
           equals(TrieRouterData(2, {':id': '456'})));
       expect(routerTrie.get(['users', 'all']), equals(TrieRouterData(3, {})));
     });
+
+    test('null-checks when a sibling is null', () {
+      routerTrie.add(['users'], 1);
+      routerTrie.add(['users', ':id'], 2);
+      expect(routerTrie.get(['users', '123']), equals(TrieRouterData(2, {':id': '123'})));
+    });
   });
 
   group('RouterGetResult', () {
