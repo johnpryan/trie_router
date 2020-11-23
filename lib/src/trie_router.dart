@@ -84,7 +84,7 @@ class TrieRouter<T> {
       } else if (current.containsWhere((k) => k.startsWith(':'))) {
         // If there is a segment that starts with `:`, we should match any
         // route.
-        current = current.getWhere((k) => k.startsWith(':'));
+        current = current.getWhere((k) => k != null && k.startsWith(':'));
 
         // Add the current segment to the parameters. E.g. ':id': '123'
         parameters[current.key] = segment;
