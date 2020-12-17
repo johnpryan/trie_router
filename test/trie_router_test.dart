@@ -32,47 +32,53 @@ void main() {
       routerTrie = TrieRouter<int>();
     });
 
+    test('addPathComponents() and contains()', () {
+      routerTrie.addPathComponents(['users', ':id'], 100);
+      expect(routerTrie.contains(['users', ':id']), isTrue);
+    });
+
     test('add() and contains()', () {
-      routerTrie.add(['users', ':id'], 100);
+      routerTrie.add('users/:id', 100);
       expect(routerTrie.contains(['users', ':id']), isTrue);
     });
 
     test('get()', () {
-      routerTrie.add(['users', 'all'], 100);
-      expect(routerTrie.get(['users', 'all']), equals(TrieRouterData(100, {})));
+      routerTrie.addPathComponents(['users', 'all'], 100);
+      expect(routerTrie.get('users/all'), equals(TrieRouterData(100, {})));
     });
 
     test('get() returns a map of keys prefixed with a colon', () {
-      routerTrie.add(['users', ':id'], 100);
+      routerTrie.addPathComponents(['users', ':id'], 100);
       expect(routerTrie.contains(['users', '123']), isTrue);
     });
 
     test('throws if there are multiple keys prefixed with a colon', () {
-      routerTrie.add(['users', ':id'], 100);
-      expect(() => routerTrie.add(['users', ':foo'], 100),
+      routerTrie.addPathComponents(['users', ':id'], 100);
+      expect(() => routerTrie.addPathComponents(['users', ':foo'], 100),
           throwsA(isA<ConflictingPathError>()));
-      expect(() => routerTrie.add(['users', ':id'], 100),
+      expect(() => routerTrie.addPathComponents(['users', ':id'], 100),
           isNot(throwsA(isA<ConflictingPathError>())));
     });
 
     test('complex example', () {
-      routerTrie.add([], 0);
-      routerTrie.add(['users', ':id'], 1);
-      routerTrie.add(['users', ':id', 'foo'], 2);
-      routerTrie.add(['users', 'all'], 3);
+      routerTrie.addPathComponents([], 0);
+      routerTrie.addPathComponents(['users', ':id'], 1);
+      routerTrie.addPathComponents(['users', ':id', 'foo'], 2);
+      routerTrie.addPathComponents(['users', 'all'], 3);
 
-      expect(routerTrie.get([]), equals(TrieRouterData(0, {})));
-      expect(routerTrie.get(['users', '123']),
+      expect(routerTrie.get(''), equals(TrieRouterData(0, {})));
+      expect(routerTrie.get('users/123'),
           equals(TrieRouterData(1, {':id': '123'})));
-      expect(routerTrie.get(['users', '456', 'foo']),
+      expect(routerTrie.get('users/456/foo'),
           equals(TrieRouterData(2, {':id': '456'})));
-      expect(routerTrie.get(['users', 'all']), equals(TrieRouterData(3, {})));
+      expect(routerTrie.get('users/all'), equals(TrieRouterData(3, {})));
     });
 
     test('null-checks when a sibling is null', () {
-      routerTrie.add(['users'], 1);
-      routerTrie.add(['users', ':id'], 2);
-      expect(routerTrie.get(['users', '123']), equals(TrieRouterData(2, {':id': '123'})));
+      routerTrie.addPathComponents(['users'], 1);
+      routerTrie.addPathComponents(['users', ':id'], 2);
+      expect(routerTrie.get('users/123'),
+          equals(TrieRouterData(2, {':id': '123'})));
     });
   });
 

@@ -1,5 +1,6 @@
 import 'package:collection/collection.dart';
 import 'package:trie_router/src/errors.dart';
+import 'package:path/path.dart' as path;
 
 import 'trie.dart';
 
@@ -13,7 +14,16 @@ class TrieRouter<T> {
   /// Throws a [ConflictingPathError] if there is a conflict.
   ///
   /// It is an error to add two segments prefixed with ':' at the same index.
-  bool add(Iterable<String> pathSegments, T value) {
+  bool add(String route, T value) {
+    var pathSegments = path.split(route);
+    print(pathSegments);
+    return addPathComponents(pathSegments, value);
+  }
+
+  /// Throws a [ConflictingPathError] if there is a conflict.
+  ///
+  /// It is an error to add two segments prefixed with ':' at the same index.
+  bool addPathComponents(Iterable<String> pathSegments, T value) {
     var list = List<String>.from(pathSegments);
     var current = _trie.root;
     var isNew = false;
@@ -74,7 +84,9 @@ class TrieRouter<T> {
     return current.contains(null);
   }
 
-  TrieRouterData<T> get(Iterable<String> pathSegments) {
+  TrieRouterData<T> get(String route) {
+    var pathSegments = path.split(route);
+
     var parameters = <String, String>{};
     var current = _trie.root;
 
