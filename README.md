@@ -6,7 +6,6 @@ A Trie-based route parser.
 
 ```dart
 import 'package:trie_router/trie_router.dart';
-import 'package:path/path.dart' as path;
 
 typedef RouteHandler = void Function(Map<String, String> parameters);
 
@@ -26,11 +25,11 @@ void main() {
 }
 
 void addRoute(String s, RouteHandler handler) {
-  router.add(path.split(s), handler);
+  router.add(s, handler);
 }
 
 void handlePath(String s) {
-  var element = router.get(path.split(s));
+  var element = router.get(s);
   element.value(element.parameters);
 }
 ```
