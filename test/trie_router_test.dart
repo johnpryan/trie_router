@@ -7,7 +7,7 @@ import 'package:test/test.dart';
 
 void main() {
   group('Trie', () {
-    Trie trie;
+    late Trie trie;
 
     setUp(() {
       trie = Trie();
@@ -26,7 +26,7 @@ void main() {
   });
 
   group('RouterTrie', () {
-    TrieRouter routerTrie;
+    late TrieRouter routerTrie;
 
     setUp(() {
       routerTrie = TrieRouter<int>();

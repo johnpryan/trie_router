@@ -22,6 +22,6 @@ void addRoute(String s, RouteHandler handler) {
 }
 
 void handlePath(String s) {
-  var element = router.get(s);
+  var element = router.get(s)!;
   element.value(element.parameters);
 }
