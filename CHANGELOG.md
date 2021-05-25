@@ -1,3 +1,7 @@
+## 2.1.0
+
+- Change parameters return type to <String, String>
+
 ## 2.0.0+1
 
 - Fix imports 
