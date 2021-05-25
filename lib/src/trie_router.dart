@@ -118,12 +118,13 @@ class TrieRouterData<T> {
   int get hashCode => hash2(value, DeepCollectionEquality().hash(parameters));
 
   @override
-  operator ==(Object other) {
+  bool operator ==(Object other) {
     return other is TrieRouterData<T> &&
         value == other.value &&
         DeepCollectionEquality().equals(parameters, other.parameters);
   }
 
+  @override
   String toString() {
     return 'RouterGetResult value: $value paramters $parameters';
   }
