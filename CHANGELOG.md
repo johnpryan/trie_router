@@ -1,3 +1,7 @@
+## 2.0.0
+
+- Upgrade to null safety
+
 ## 1.0.2
 
 - Update quiver dependency (#5)
