@@ -1,3 +1,7 @@
+## 2.0.0+1
+
+- Fix imports 
+
 ## 2.0.0
 
 - Upgrade to null safety
