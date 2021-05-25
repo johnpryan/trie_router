@@ -44,7 +44,8 @@ void main() {
 
     test('get()', () {
       routerTrie.addPathComponents(['users', 'all'], 100);
-      expect(routerTrie.get('users/all'), equals(TrieRouterData(100, {})));
+      expect(
+          routerTrie.get('users/all'), equals(TrieRouterData<int?>(100, {})));
     });
 
     test('get() returns a map of keys prefixed with a colon', () {
@@ -66,19 +67,19 @@ void main() {
       routerTrie.addPathComponents(['users', ':id', 'foo'], 2);
       routerTrie.addPathComponents(['users', 'all'], 3);
 
-      expect(routerTrie.get(''), equals(TrieRouterData(0, {})));
+      expect(routerTrie.get(''), equals(TrieRouterData<int?>(0, {})));
       expect(routerTrie.get('users/123'),
-          equals(TrieRouterData(1, {':id': '123'})));
+          equals(TrieRouterData<int?>(1, {':id': '123'})));
       expect(routerTrie.get('users/456/foo'),
-          equals(TrieRouterData(2, {':id': '456'})));
-      expect(routerTrie.get('users/all'), equals(TrieRouterData(3, {})));
+          equals(TrieRouterData<int?>(2, {':id': '456'})));
+      expect(routerTrie.get('users/all'), equals(TrieRouterData<int?>(3, {})));
     });
 
     test('null-checks when a sibling is null', () {
       routerTrie.addPathComponents(['users'], 1);
       routerTrie.addPathComponents(['users', ':id'], 2);
       expect(routerTrie.get('users/123'),
-          equals(TrieRouterData(2, {':id': '123'})));
+          equals(TrieRouterData<int?>(2, {':id': '123'})));
     });
   });
 

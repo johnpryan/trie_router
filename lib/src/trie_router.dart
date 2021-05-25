@@ -88,7 +88,7 @@ class TrieRouter<T> {
   TrieRouterData<T?>? get(String route) {
     var pathSegments = path.split(route);
 
-    var parameters = <String?, String>{};
+    var parameters = <String, String>{};
     TrieNode<String?, T?>? current = _trie.root;
 
     for (var segment in pathSegments) {
@@ -100,7 +100,7 @@ class TrieRouter<T> {
         current = current.getWhere((k) => k != null && k.startsWith(':'));
 
         // Add the current segment to the parameters. E.g. ':id': '123'
-        parameters[current!.key] = segment;
+        parameters[current!.key!] = segment;
       } else {
         return null;
       }
@@ -111,7 +111,7 @@ class TrieRouter<T> {
 
 class TrieRouterData<T> {
   final T value;
-  final Map<String?, String> parameters;
+  final Map<String, String> parameters;
 
   TrieRouterData(this.value, this.parameters);
 
@@ -127,6 +127,6 @@ class TrieRouterData<T> {
 
   @override
   String toString() {
-    return 'RouterGetResult value: $value paramters $parameters';
+    return 'RouterGetResult value: $value parameters $parameters';
   }
 }
