@@ -1,10 +1,11 @@
 import 'package:collection/collection.dart';
-import 'package:trie_router/src/errors.dart';
 import 'package:path/path.dart' as path;
+import 'package:quiver/core.dart';
+import 'package:trie_router/src/errors.dart';
 
 import 'trie.dart';
+import 'trie_node.dart';
 
-import 'package:quiver/core.dart';
 
 class TrieRouter<T> {
   final Trie<String, T> _trie;
