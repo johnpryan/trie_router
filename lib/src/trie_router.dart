@@ -6,7 +6,6 @@ import 'package:trie_router/src/errors.dart';
 import 'trie.dart';
 import 'trie_node.dart';
 
-
 class TrieRouter<T> {
   final Trie<String, T> _trie;
 
