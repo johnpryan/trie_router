@@ -84,6 +84,7 @@ class TrieRouter<T> {
   }
 
   TrieRouterData<T?>? get(String route) {
+    route = Uri.parse(route).replace(queryParameters: {}).toString().replaceFirst('?', '');
     var pathSegments = path.split(route);
 
     var parameters = <String, String>{};

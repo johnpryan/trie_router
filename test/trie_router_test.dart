@@ -81,6 +81,13 @@ void main() {
       expect(routerTrie.get('users/123'),
           equals(TrieRouterData<int?>(2, {':id': '123'})));
     });
+
+    test('query parameters', () {
+      routerTrie.addPathComponents(['users'], 1);
+      routerTrie.addPathComponents(['users', ':id'], 2);
+      expect(routerTrie.get('users/123?foo=bar'),
+          equals(TrieRouterData<int?>(2, {':id': '123'})));
+    });
   });
 
   group('RouterGetResult', () {
