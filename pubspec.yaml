@@ -1,6 +1,6 @@
 name: trie_router
 description: A Trie-based route parsing package
-version: 2.1.0
+version: 2.1.0+1
 homepage: https://github.com/johnpryan/trie_router
 
 environment:
