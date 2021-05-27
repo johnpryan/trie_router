@@ -1,3 +1,7 @@
+## 2.1.1
+
+- ignore query parameters
+
 ## 2.1.0+1
 
 - Clean up
