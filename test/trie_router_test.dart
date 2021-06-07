@@ -37,6 +37,17 @@ void main() {
       expect(routerTrie.contains(['users', ':id']), isTrue);
     });
 
+    test('addPathComponents() with / path component', () {
+      routerTrie.addPathComponents(['/', 'users', ':id'], 100);
+      expect(routerTrie.contains(['/', 'users', ':id']), isTrue);
+    });
+
+    test('contains() with partial paths', () {
+      routerTrie.addPathComponents(['users'], 99);
+      routerTrie.addPathComponents(['users', ':id'], 100);
+      expect(routerTrie.contains(['users', '123']), isTrue);
+    });
+
     test('add() and contains()', () {
       routerTrie.add('users/:id', 100);
       expect(routerTrie.contains(['users', ':id']), isTrue);

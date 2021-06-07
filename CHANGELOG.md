@@ -1,3 +1,7 @@
+## 2.1.2
+
+- bug fixes
+
 ## 2.1.1
 
 - ignore query parameters

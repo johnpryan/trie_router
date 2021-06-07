@@ -33,6 +33,7 @@ class TrieNode<K, V> {
 
   TrieNode<K, V>? getWhere(bool Function(K k) test) {
     for (var childKey in _children.keys) {
+      if (childKey == null) continue;
       if (test(childKey)) {
         return _children[childKey];
       }
