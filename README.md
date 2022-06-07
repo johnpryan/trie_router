@@ -1,4 +1,5 @@
 # trie_router
+ARCHIVED: See [go_router_prototype](https://github.com/johnpryan/go_router_prototype)
 
 A Trie-based route parser.
 
